@@ -3,17 +3,8 @@ todoList = document.querySelector (".todo-list"),
 todoCompleted = document.querySelector (".todo-completed"),
 todoContainer = document.querySelector (".todo-container");
 
-let obj = [
-{
-value: "Сварить кофе",
-completed: false
-},
-
-{
-value: "Помыть посуду",
-completed: true
-}
-];
+let obj ;
+load();
 const render = () =>{
 todoList.textContent="";
 todoCompleted.textContent="";
@@ -44,7 +35,6 @@ obj.push(newObj);
 render();
 save();
 } )
-
 todoContainer.addEventListener('click',(event)=>{
     event.preventDefault();
     const target=event.target;
@@ -72,7 +62,6 @@ todoContainer.addEventListener('click',(event)=>{
         if (loadObj!=null){
         obj = JSON.parse(loadObj);
         }
-        render();
     }
-    load();
+   
     
