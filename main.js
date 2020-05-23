@@ -14,7 +14,6 @@ value: "Помыть посуду",
 completed: true
 }
 ];
-
 const render = () =>{
 todoList.textContent="";
 todoCompleted.textContent="";
@@ -46,8 +45,6 @@ render();
 save();
 } )
 
-
-
 todoContainer.addEventListener('click',(event)=>{
     event.preventDefault();
     const target=event.target;
@@ -61,20 +58,18 @@ todoContainer.addEventListener('click',(event)=>{
     if (target.matches('.todo-complete')){
         obj[id].completed=true;
       render();
-
     }
     save();
     })
     function save()
     {
         const saveObj = JSON.stringify(obj);
-        localStorage.setItem("spisok",saveObj);
+        document.cookie="spisok="+saveObj; 
     }
     function load()
     {
-        const loadObj =localStorage.getItem("spisok");
+        const loadObj =document.cookie.split('=')[1];
         if (loadObj!=null){
-
         obj = JSON.parse(loadObj);
         }
         render();
