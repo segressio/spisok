@@ -3,11 +3,13 @@ todoList = document.querySelector (".todo-list"),
 todoCompleted = document.querySelector (".todo-completed"),
 todoContainer = document.querySelector (".todo-container");
 
-let obj ;
+let obj =[]; 
 load();
+
 const render = () =>{
 todoList.textContent="";
 todoCompleted.textContent="";
+if (Object.keys(obj).length != 0) {
 let idCount=0;
 obj.forEach((el) =>{
 if (el!=null){
@@ -23,7 +25,7 @@ li.innerHTML = `<span class="text-todo">${el.value}</span>
 if (el.completed) todoCompleted.append(li);
 else todoList.append(li);
 }idCount++;
-})
+})}
 }
 render();
 
@@ -42,8 +44,7 @@ todoContainer.addEventListener('click',(event)=>{
     const id=parseInt(target.closest('li').id);
     if (target.matches('.todo-remove')){
         target.closest('li').remove();
-
-      delete  obj[id];
+     obj[id]=null;
     }
     if (target.matches('.todo-complete')){
         obj[id].completed=true;
